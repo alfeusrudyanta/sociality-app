@@ -5,6 +5,9 @@ import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
 import { feedKeys } from './use-feeds';
 import { savedPostKeys } from './use-saves';
 import { toast } from 'sonner';
+import { useDispatch } from 'react-redux';
+import { setProfile } from '@/store/slices/profile-slice';
+import { useEffect } from 'react';
 
 export const meProfilekeys = {
   all: ['meProfile'] as const,
@@ -15,13 +18,23 @@ export const mePostskeys = {
 };
 
 export const useMe = () => {
-  return useQuery({
+  const dispatch = useDispatch();
+
+  const query = useQuery({
     queryKey: meProfilekeys.all,
 
     queryFn: () => {
       return apiMe.getMe();
     },
   });
+
+  useEffect(() => {
+    if (query.data) {
+      dispatch(setProfile(query.data.data));
+    }
+  }, [query.data, dispatch]);
+
+  return query;
 };
 
 export const usePatchMe = () => {
