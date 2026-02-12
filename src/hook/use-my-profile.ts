@@ -4,6 +4,7 @@ import type { PatchMeRequest } from '@/types/api-my-profile';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
 import { feedKeys } from './use-feeds';
 import { savedPostKeys } from './use-saves';
+import { toast } from 'sonner';
 
 export const meProfilekeys = {
   all: ['meProfile'] as const,
@@ -29,11 +30,16 @@ export const usePatchMe = () => {
       return apiMe.patchMe(body);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Profile updated');
       queryClient.invalidateQueries({ queryKey: meProfilekeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
       queryClient.invalidateQueries({ queryKey: savedPostKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to update profile');
     },
   });
 };

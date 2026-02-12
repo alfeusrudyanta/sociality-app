@@ -1,6 +1,7 @@
 import { apiSaves } from '@/api/api-saves';
 import { queryClient } from '@/lib/query-client';
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 export const savedPostKeys = {
   all: ['saved'] as const,
@@ -12,8 +13,13 @@ export const usePostSave = (postId: number) => {
       return apiSaves.postSave(postId);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Post saved');
       queryClient.invalidateQueries({ queryKey: savedPostKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to save post');
     },
   });
 };
@@ -24,8 +30,13 @@ export const useDeleteSave = (postId: number) => {
       return apiSaves.deleteSave(postId);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Post unsaved');
       queryClient.invalidateQueries({ queryKey: savedPostKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to unsave post');
     },
   });
 };

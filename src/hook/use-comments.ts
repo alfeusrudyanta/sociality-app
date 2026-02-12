@@ -17,6 +17,7 @@ import { feedKeys } from './use-feeds';
 import { postsKeys } from './use-posts';
 import { mePostskeys } from './use-my-profile';
 import { savedPostKeys } from './use-saves';
+import { toast } from 'sonner';
 
 export const commentsKeys = {
   all: ['comments'] as const,
@@ -105,6 +106,7 @@ export const usePostComment = (postId: number) => {
     },
 
     onError: (_err, _variables, context) => {
+      toast.error('Failed to post comment');
       if (context?.previousData) {
         queryClient.setQueryData(
           commentsKeys.list(postId),
@@ -114,6 +116,7 @@ export const usePostComment = (postId: number) => {
     },
 
     onSuccess: () => {
+      toast.success('Comment posted');
       queryClient.invalidateQueries({
         queryKey: commentsKeys.list(postId),
       });
@@ -166,6 +169,7 @@ export const useDeleteComment = (postId: number) => {
     },
 
     onError: (_err, _variables, context) => {
+      toast.error('Failed to delete comment');
       if (context?.previousData) {
         queryClient.setQueryData(
           commentsKeys.list(postId),
@@ -175,6 +179,7 @@ export const useDeleteComment = (postId: number) => {
     },
 
     onSuccess: () => {
+      toast.success('Comment deleted');
       queryClient.invalidateQueries({
         queryKey: commentsKeys.list(postId),
       });

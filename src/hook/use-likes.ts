@@ -5,6 +5,7 @@ import { feedKeys } from './use-feeds';
 import { postsKeys } from './use-posts';
 import { mePostskeys } from './use-my-profile';
 import { savedPostKeys } from './use-saves';
+import { toast } from 'sonner';
 
 export const likesKeys = {
   all: ['likes'] as const,
@@ -21,13 +22,18 @@ export const usePostLike = (postId: number) => {
       return apiLikes.postLike(postId);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Liked');
       queryClient.invalidateQueries({ queryKey: likesKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: postsKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: meLikesKeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
       queryClient.invalidateQueries({ queryKey: savedPostKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to like');
     },
   });
 };
@@ -38,13 +44,18 @@ export const useDeleteLike = (postId: number) => {
       return apiLikes.deleteLike(postId);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Unliked');
       queryClient.invalidateQueries({ queryKey: likesKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: postsKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: meLikesKeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
       queryClient.invalidateQueries({ queryKey: savedPostKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to unlike');
     },
   });
 };

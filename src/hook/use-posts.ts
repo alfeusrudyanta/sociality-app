@@ -6,6 +6,7 @@ import { feedKeys } from './use-feeds';
 import { mePostskeys, meProfilekeys } from './use-my-profile';
 import { savedPostKeys } from './use-saves';
 import { meLikesKeys } from './use-likes';
+import { toast } from 'sonner';
 
 export const postsKeys = {
   all: ['posts'] as const,
@@ -41,10 +42,15 @@ export const usePostPost = () => {
       return apiPosts.postPost(body);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Post created');
       queryClient.invalidateQueries({ queryKey: meProfilekeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to create post');
     },
   });
 };
@@ -65,13 +71,18 @@ export const useDeletePost = (postId: number) => {
       return apiPosts.deletePost(postId);
     },
 
-    onSettled: () => {
+    onSuccess: () => {
+      toast.success('Post deleted');
       queryClient.invalidateQueries({ queryKey: postsKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: meProfilekeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
       queryClient.invalidateQueries({ queryKey: savedPostKeys.all });
       queryClient.invalidateQueries({ queryKey: meLikesKeys.all });
+    },
+
+    onError: () => {
+      toast.error('Failed to delete post');
     },
   });
 };

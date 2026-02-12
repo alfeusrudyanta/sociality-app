@@ -2,6 +2,7 @@ import { apiFollow } from '@/api/api-follow';
 import { queryClient } from '@/lib/query-client';
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import { userProfileKeys } from './use-users';
+import { toast } from 'sonner';
 
 export const followingKeys = {
   all: ['following'] as const,
@@ -24,11 +25,17 @@ export const meFollowingKeys = {
 export const usePostFollow = (username: string) => {
   return useMutation({
     mutationFn: () => apiFollow.postFollow(username),
-    onSettled: () => {
+
+    onSuccess: () => {
+      toast.success('Followed');
       queryClient.invalidateQueries({ queryKey: followersKeys.list(username) });
       queryClient.invalidateQueries({
         queryKey: userProfileKeys.list(username),
       });
+    },
+
+    onError: () => {
+      toast.error('Failed to Follow');
     },
   });
 };
@@ -36,11 +43,17 @@ export const usePostFollow = (username: string) => {
 export const useDeleteFollow = (username: string) => {
   return useMutation({
     mutationFn: () => apiFollow.deleteFollow(username),
-    onSettled: () => {
+
+    onSuccess: () => {
+      toast.success('Unfollowed');
       queryClient.invalidateQueries({ queryKey: followersKeys.list(username) });
       queryClient.invalidateQueries({
         queryKey: userProfileKeys.list(username),
       });
+    },
+
+    onError: () => {
+      toast.error('Failed to unfollow');
     },
   });
 };
