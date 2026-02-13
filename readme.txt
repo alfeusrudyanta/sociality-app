@@ -22,6 +22,10 @@ export function validateAvatar(file: File) {
   }
 }
 
-Noted:
-add profile in redux  => set on header
-add toaster on hooks
+Complete:
+Login
+Register
+
+work add comment:
+LikeCommentSave
+homepage => card

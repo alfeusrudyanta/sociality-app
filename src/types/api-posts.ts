@@ -1,13 +1,13 @@
 import type {
   ApiResponse,
-  PaginatedItems,
+  PaginatedPosts,
   PaginationParams,
   PostSummary,
 } from './api';
 
 export type GetPostsParams = PaginationParams;
 
-export type GetPostsResponse = ApiResponse<PaginatedItems<PostSummary>>;
+export type GetPostsResponse = ApiResponse<PaginatedPosts<PostSummary>>;
 
 export type PostPostRequest = {
   image: File;

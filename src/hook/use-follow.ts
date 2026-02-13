@@ -1,8 +1,9 @@
 import { apiFollow } from '@/api/api-follow';
 import { queryClient } from '@/lib/query-client';
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
-import { userProfileKeys } from './use-users';
+import { userLikesKeys, userProfileKeys } from './use-users';
 import { toast } from 'sonner';
+import { feedKeys } from './use-feeds';
 
 export const followingKeys = {
   all: ['following'] as const,
@@ -32,6 +33,8 @@ export const usePostFollow = (username: string) => {
       queryClient.invalidateQueries({
         queryKey: userProfileKeys.list(username),
       });
+      queryClient.invalidateQueries({ queryKey: userLikesKeys.list(username) });
+      queryClient.invalidateQueries({ queryKey: feedKeys.all });
     },
 
     onError: () => {
@@ -50,6 +53,8 @@ export const useDeleteFollow = (username: string) => {
       queryClient.invalidateQueries({
         queryKey: userProfileKeys.list(username),
       });
+      queryClient.invalidateQueries({ queryKey: userLikesKeys.list(username) });
+      queryClient.invalidateQueries({ queryKey: feedKeys.all });
     },
 
     onError: () => {

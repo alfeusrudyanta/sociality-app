@@ -26,6 +26,7 @@ export const usePostLike = (postId: number) => {
       toast.success('Liked');
       queryClient.invalidateQueries({ queryKey: likesKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: postsKeys.list(postId) });
+      queryClient.invalidateQueries({ queryKey: postsKeys.all });
       queryClient.invalidateQueries({ queryKey: meLikesKeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
@@ -48,6 +49,7 @@ export const useDeleteLike = (postId: number) => {
       toast.success('Unliked');
       queryClient.invalidateQueries({ queryKey: likesKeys.list(postId) });
       queryClient.invalidateQueries({ queryKey: postsKeys.list(postId) });
+      queryClient.invalidateQueries({ queryKey: postsKeys.all });
       queryClient.invalidateQueries({ queryKey: meLikesKeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });

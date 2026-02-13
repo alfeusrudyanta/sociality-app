@@ -2,7 +2,7 @@ import Axios from 'axios';
 import Cookies from 'js-cookie';
 
 export const AxiosInstance = Axios.create({
-  baseURL: import.meta.env.BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
 });
