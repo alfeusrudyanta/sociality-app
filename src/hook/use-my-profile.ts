@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '@/store/slices/profile-slice';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const meProfilekeys = {
   all: ['meProfile'] as const,
@@ -38,6 +39,8 @@ export const useMe = () => {
 };
 
 export const usePatchMe = () => {
+  const navigate = useNavigate();
+
   return useMutation({
     mutationFn: (body: PatchMeRequest) => {
       return apiMe.patchMe(body);
@@ -45,6 +48,7 @@ export const usePatchMe = () => {
 
     onSuccess: () => {
       toast.success('Profile updated');
+      navigate('/my-profile');
       queryClient.invalidateQueries({ queryKey: meProfilekeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });

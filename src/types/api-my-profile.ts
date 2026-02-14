@@ -19,8 +19,7 @@ export type PatchMeRequest = {
   username: string;
   phone: string;
   bio: string;
-  avatar?: File;
-  avatarUrl?: string;
+  avatar: File;
 };
 
 export type PatchMeResponse = ApiResponse<UserProfile & { updatedAt: string }>;

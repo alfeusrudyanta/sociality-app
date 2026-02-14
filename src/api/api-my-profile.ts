@@ -20,14 +20,7 @@ export const apiMe = {
     formData.append('username', body.username);
     formData.append('phone', body.phone);
     formData.append('bio', body.bio);
-
-    if (body.avatar) {
-      formData.append('avatar', body.avatar);
-    }
-
-    if (body.avatarUrl) {
-      formData.append('avatarUrl', body.avatarUrl);
-    }
+    formData.append('avatar', body.avatar);
 
     const response = await AxiosInstance.patch<PatchMeResponse>(
       '/api/me',

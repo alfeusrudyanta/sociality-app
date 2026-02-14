@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           'bg-primary-300 hover:bg-primary-300/90 text-neutral-25 tracking-[-0.02em]',
         transparant:
-          'text-neutral-25 tracking-[0.01em] border border-neutral-900',
+          'text-neutral-25 tracking-[0.01em] border border-neutral-900 hover:text-neutral-400',
         gray: 'bg-neutral-900 hover:bg-neutral-900/90 border-neutral-900 border gap-1.5 rounded-lg text-sm-medium text-neutral-25 tracking-[-0.03em]',
       },
       size: {

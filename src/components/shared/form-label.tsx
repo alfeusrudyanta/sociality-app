@@ -23,7 +23,7 @@ export const FormLabel: React.FC<FormLabelProps> = ({
   error,
 }) => {
   return (
-    <label htmlFor={id} className='flex flex-col gap-0.5'>
+    <label htmlFor={id} className='flex w-full flex-col gap-0.5'>
       <span className='text-sm-bold tracking-[-0.02em] text-white'>{name}</span>
 
       <input
