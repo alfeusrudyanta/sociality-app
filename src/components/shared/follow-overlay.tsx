@@ -1,4 +1,3 @@
-import { likesKeys, useGetPostLikes } from '@/hook/use-likes';
 import {
   Dialog,
   DialogContent,
@@ -12,51 +11,61 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CircleCheck } from 'lucide-react';
-import { useDeleteFollow, usePostFollow } from '@/hook/use-follow';
-import { queryClient } from '@/lib/query-client';
+import {
+  useDeleteFollow,
+  useGetFollowers,
+  useGetFollowing,
+  usePostFollow,
+} from '@/hook/use-follow';
 import { LoadingSpinner } from './loading-spinner';
+import type { UserSearch } from '@/types/api';
+import { useMe } from '@/hook/use-my-profile';
 
-type LikeOverlayProps = {
-  id: number;
+type FollowOverlayProps = {
+  username: string;
   isOpen: boolean;
+  isFollower?: boolean;
   setIsOpen: (open: boolean) => void;
 };
 
-export const LikeOverlay: React.FC<LikeOverlayProps> = ({
-  id,
+export const FollowOverlay: React.FC<FollowOverlayProps> = ({
+  username,
   isOpen,
+  isFollower = true,
   setIsOpen,
 }) => {
+  const followers = useGetFollowers(username);
+  const following = useGetFollowing(username);
   const { ref, inView } = useInView();
-  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
-    useGetPostLikes(id);
+
+  const user = isFollower ? followers : following;
 
   useEffect(() => {
-    if (inView && hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
+    if (inView && user.hasNextPage && !user.isFetchingNextPage) {
+      user.fetchNextPage();
     }
-  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
+  }, [inView, user.hasNextPage, user.isFetchingNextPage, user.fetchNextPage]);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className='md:max-w-137'>
         <DialogHeader>
           <DialogTitle className='text-md-bold md:text-xl-bold text-neutral-25 tracking-[-0.02em]'>
-            Like
+            {isFollower ? 'Follower' : 'Following'}
           </DialogTitle>
         </DialogHeader>
         <DialogDescription></DialogDescription>
 
         <div className='hide-scrollbar flex flex-col gap-5 overflow-y-auto scroll-smooth'>
-          {data?.pages.map((page) =>
-            page.data.users.map((likes) => (
-              <LikeRow key={likes.id} likes={likes} postId={id} />
+          {user.data?.pages.map((page) =>
+            page.data.users.map((user) => (
+              <FollowRow key={user.id} user={user} />
             ))
           )}
 
           <div ref={ref} />
 
-          {isFetchingNextPage && (
+          {user.isFetchingNextPage && (
             <div className='mt-5 flex w-full items-center justify-center md:mt-4'>
               <LoadingSpinner />
             </div>
@@ -68,71 +77,57 @@ export const LikeOverlay: React.FC<LikeOverlayProps> = ({
 };
 
 type LikeRowProps = {
-  postId: number;
-  likes: {
-    id: number;
-    username: string;
-    name: string;
-    avatarUrl: string;
-    isFollowedByMe: boolean;
-    isMe: boolean;
-    followsMe: boolean;
-  };
+  user: UserSearch;
 };
 
-const LikeRow: React.FC<LikeRowProps> = ({ likes, postId }) => {
-  const follow = usePostFollow(likes.username);
-  const unfollow = useDeleteFollow(likes.username);
+const FollowRow: React.FC<LikeRowProps> = ({ user }) => {
+  const { data } = useMe();
+  const follow = usePostFollow(user.username);
+  const unfollow = useDeleteFollow(user.username);
+
+  const isMe = data?.data.profile.username === user.username;
 
   const handleFollow = () => {
     if (follow.isPending || unfollow.isPending) return;
 
-    if (likes.isFollowedByMe) {
-      unfollow.mutate(undefined, {
-        onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: likesKeys.list(postId) });
-        },
-      });
+    if (user.isFollowedByMe) {
+      unfollow.mutate();
     } else {
-      follow.mutate(undefined, {
-        onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: likesKeys.list(postId) });
-        },
-      });
+      follow.mutate();
     }
   };
 
   return (
     <div className='flex items-center justify-between'>
-      <Link to={`/profile/${likes.username}`}>
+      <Link to={`/profile/${user.username}`}>
         <div className='flex items-center gap-2'>
           <img
-            src={likes.avatarUrl || '/images/profile-picture.png'}
-            alt={likes.name}
+            src={user.avatarUrl || '/images/profile-picture.png'}
+            alt={user.name}
             className='size-12 rounded-full'
           />
 
           <div className='flex flex-col'>
             <span className='text-sm-bold text-neutral-25 tracking-[-0.01em]'>
-              {likes.name}
+              {user.name}
             </span>
             <span className='text-sm-regular tracking-[-0.02em] text-neutral-400'>
-              {likes.username}
+              {user.username}
             </span>
           </div>
         </div>
       </Link>
 
-      {!likes.isMe && (
+      {!isMe && (
         <Button
           type='button'
           size='button'
           onClick={handleFollow}
-          variant={likes.isFollowedByMe ? 'transparant' : 'default'}
-          className={cn(likes.isFollowedByMe ? 'max-w-31.75' : 'max-w-23.25')}
+          variant={user.isFollowedByMe ? 'transparant' : 'default'}
+          className={cn(user.isFollowedByMe ? 'max-w-31.75' : 'max-w-23.25')}
         >
           {/* Followed */}
-          {likes.isFollowedByMe && (
+          {user.isFollowedByMe && (
             <span className='text-sm-bold text-neutral-25 flex items-center gap-2'>
               <CircleCheck className='size-5' />
               Following
@@ -140,7 +135,7 @@ const LikeRow: React.FC<LikeRowProps> = ({ likes, postId }) => {
           )}
 
           {/* Not Followed */}
-          {!likes.isFollowedByMe && (
+          {!user.isFollowedByMe && (
             <span className='text-sm-bold text-neutral-25'>Follow</span>
           )}
         </Button>

@@ -1,6 +1,6 @@
 import type {
   ApiResponse,
-  PaginatedPosts,
+  PaginatedItems,
   PaginationParams,
   PostSummary,
   UserProfile,
@@ -27,4 +27,4 @@ export type PatchMeResponse = ApiResponse<UserProfile & { updatedAt: string }>;
 
 export type GetMePostsParams = PaginationParams;
 
-export type GetMePostsResponse = ApiResponse<PaginatedPosts<PostSummary>>;
+export type GetMePostsResponse = ApiResponse<PaginatedItems<PostSummary>>;

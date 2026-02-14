@@ -68,7 +68,6 @@ function TabsTrigger({
         'h-10 rounded-2xl px-10 py-1 whitespace-nowrap transition-all',
         'text-sm-regular md:text-md-regular md:data-[state=active]:text-md-semibold data-[state=active]:text-sm-semibold data-[state=active]:bg-white data-[state=active]:text-neutral-950',
         'cursor-pointer',
-        'transition-all',
         className
       )}
       {...props}

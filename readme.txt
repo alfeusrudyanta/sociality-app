@@ -25,7 +25,5 @@ export function validateAvatar(file: File) {
 Complete:
 Login
 Register
-
-work add comment:
-LikeCommentSave
-homepage => card
+Homepage
+AddPost

@@ -12,6 +12,8 @@ import { RegisterPage } from '@/features/register-page';
 import { HomePage } from '@/features/home-page';
 import { AddPostPage } from '@/features/add-post-page';
 import { FloatingMenu } from '@/components/shared/floating-menu';
+import { MyProfilePage } from '@/features/my-profile-page';
+import { ProfilePage } from '@/features/profile-page';
 
 const AuthLayout = () => {
   return (
@@ -55,9 +57,9 @@ export const App = () => {
         {/* App with menu */}
         <Route element={<AppLayout />}>
           <Route path='/' element={<HomePage />} />
-          <Route path='/my-profile' element={<div />} />
+          <Route path='/my-profile' element={<MyProfilePage />} />
           <Route path='/update-profile' element={<div />} />
-          <Route path='/profile/:username' element={<div />} />
+          <Route path='/profile/:username' element={<ProfilePage />} />
         </Route>
 
         {/* App without menu */}

@@ -1,6 +1,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
@@ -139,6 +140,7 @@ export const CommentOverlay: React.FC<CommentOverlayProps> = ({
         <DialogHeader>
           <DialogTitle className='sr-only'>Comments</DialogTitle>
         </DialogHeader>
+        <DialogDescription></DialogDescription>
 
         {/* Column Left */}
         <div className='hidden aspect-square max-h-180 max-w-180 flex-6 overflow-hidden md:flex'>

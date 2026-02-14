@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import type { PostSummary } from '@/types/api';
 import { Bookmark, Heart, MessageSquareMore, Send } from 'lucide-react';
 import { useState } from 'react';
-import { LikeOverlay } from './like-overlay';
+import { LikeOverlay } from '@/components/shared/like-overlay';
 import { CommentOverlay } from './comment-overlay';
 
 type LikeCommentSaveProps = {
