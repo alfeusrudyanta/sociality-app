@@ -37,6 +37,8 @@ export const LikeOverlay: React.FC<LikeOverlayProps> = ({
     }
   }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
+  const likeData = data?.pages.flatMap((page) => page.data.users) ?? [];
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className='md:max-w-137'>
@@ -47,12 +49,16 @@ export const LikeOverlay: React.FC<LikeOverlayProps> = ({
         </DialogHeader>
         <DialogDescription></DialogDescription>
 
+        {likeData.length === 0 && (
+          <span className='text-sm-regular md:text-md-regular text-neutral-25 -mt-5'>
+            Be the first to like this post
+          </span>
+        )}
+
         <div className='hide-scrollbar flex flex-col gap-5 overflow-y-auto scroll-smooth'>
-          {data?.pages.map((page) =>
-            page.data.users.map((likes) => (
-              <LikeRow key={likes.id} likes={likes} postId={id} />
-            ))
-          )}
+          {likeData.map((likes) => (
+            <LikeRow key={likes.id} likes={likes} postId={id} />
+          ))}
 
           <div ref={ref} />
 

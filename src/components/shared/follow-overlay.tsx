@@ -49,6 +49,8 @@ export const FollowOverlay: React.FC<FollowOverlayProps> = ({
     }
   }, [inView, user.hasNextPage, user.isFetchingNextPage, user.fetchNextPage]);
 
+  const userData = user.data?.pages.flatMap((page) => page.data.users) ?? [];
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className='md:max-w-137'>
@@ -59,12 +61,16 @@ export const FollowOverlay: React.FC<FollowOverlayProps> = ({
         </DialogHeader>
         <DialogDescription></DialogDescription>
 
+        {userData.length === 0 && (
+          <span className='text-sm-regular md:text-md-regular text-neutral-25 -mt-5'>
+            {isFollower ? 'No followers yet' : 'Not following anyone yet'}
+          </span>
+        )}
+
         <div className='hide-scrollbar flex flex-col gap-5 overflow-y-auto scroll-smooth'>
-          {user.data?.pages.map((page) =>
-            page.data.users.map((user) => (
-              <FollowRow key={user.id} user={user} username={username} />
-            ))
-          )}
+          {userData.map((user) => (
+            <FollowRow key={user.id} user={user} username={username} />
+          ))}
 
           <div ref={ref} />
 
