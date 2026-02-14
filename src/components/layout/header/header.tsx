@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useMe } from '@/hook/use-my-profile';
 import { useIsMobile } from '@/hook/use-is-mobile';
 import { useLogout } from '@/hook/use-auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SearchBar } from './components/search-bar';
 
 export const Header = () => {
   const { data, isPending, isError } = useMe();
-  const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const logout = useLogout();
 
   const [isLogoutOpen, setIsLogoutOpen] = useState<boolean>(false);
   const [isSearhOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -35,8 +35,7 @@ export const Header = () => {
   }
 
   const handleLogOut = () => {
-    useLogout();
-    navigate('/login');
+    logout();
   };
 
   return (
