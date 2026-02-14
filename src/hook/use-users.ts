@@ -78,7 +78,7 @@ export const useUserSearch = (q: string) => {
       const params = {
         q,
         page: pageParam,
-        limit: 20,
+        limit: 5,
       };
 
       return apiUsers.getUserSearch(params);
@@ -90,6 +90,8 @@ export const useUserSearch = (q: string) => {
         ? nextPage
         : undefined;
     },
+
+    enabled: !!q,
   });
 };
 

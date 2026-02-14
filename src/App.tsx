@@ -15,6 +15,7 @@ import { FloatingMenu } from '@/components/shared/floating-menu';
 import { MyProfilePage } from '@/features/my-profile-page';
 import { ProfilePage } from '@/features/profile-page';
 import { UpdateProfilePage } from '@/features/update-profile-page';
+import { Header } from '@/components/layout/header';
 
 const AuthLayout = () => {
   return (
@@ -27,7 +28,7 @@ const AuthLayout = () => {
 const AppLayout = () => {
   return (
     <div className='text-neutral-25 flex min-h-screen flex-col bg-black'>
-      <header />
+      <Header />
       <Outlet />
       <FloatingMenu />
     </div>
@@ -37,7 +38,7 @@ const AppLayout = () => {
 const AppLayoutWithoutMenu = () => {
   return (
     <div className='text-neutral-25 flex min-h-screen flex-col bg-black'>
-      <header />
+      <Header />
       <Outlet />
     </div>
   );

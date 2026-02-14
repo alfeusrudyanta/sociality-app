@@ -22,8 +22,6 @@ export function validateAvatar(file: File) {
   }
 }
 
-Complete:
-Login
-Register
-Homepage
-AddPost
+Need:
+Header
+middleware
