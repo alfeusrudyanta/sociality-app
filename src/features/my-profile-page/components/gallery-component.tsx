@@ -1,8 +1,27 @@
+import { LoadingSpinner } from '@/components/shared/loading-spinner';
 import { ProfilePostItem } from '@/components/shared/profile-post-item';
 import { useMePosts } from '@/hook/use-my-profile';
 
 export const GalleryComponent = () => {
-  const { data } = useMePosts();
+  const { data, isPending } = useMePosts();
+
+  const posts = data?.pages.flatMap((page) => page.data.items) ?? [];
+
+  if (isPending) {
+    return (
+      <div className='flex h-40 items-center justify-center'>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (posts.length === 0) {
+    return (
+      <div className='flex h-40 flex-col items-center justify-center text-center'>
+        <span className='text-md-bold md:text-lg-bold'>No posts yet</span>
+      </div>
+    );
+  }
 
   return (
     <div className='grid grid-cols-3 gap-1'>
