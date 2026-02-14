@@ -143,7 +143,7 @@ export const CommentOverlay: React.FC<CommentOverlayProps> = ({
         {/* Column Left */}
         <div className='hidden aspect-square max-h-180 max-w-180 flex-6 overflow-hidden md:flex'>
           <img
-            src={post.data?.data.imageUrl ?? '/images/post-img.png'}
+            src={post.data?.data.imageUrl || '/images/post-img.png'}
             alt='Feed Image'
             className='size-full object-cover object-center'
           />
@@ -159,7 +159,7 @@ export const CommentOverlay: React.FC<CommentOverlayProps> = ({
                 <Link to={`/profile/${post.data?.data.author.username}`}>
                   <img
                     src={
-                      post.data?.data.author.avatarUrl ??
+                      post.data?.data.author.avatarUrl ||
                       '/images/profile-picture.png'
                     }
                     alt={post.data?.data.author.name}
@@ -228,7 +228,7 @@ export const CommentOverlay: React.FC<CommentOverlayProps> = ({
                       className='flex flex-col gap-3 md:gap-4'
                     >
                       <CommentCard
-                        username={me.data?.data.profile.username ?? 'User'}
+                        username={me.data?.data.profile.username || 'User'}
                         postId={id}
                         comment={comment}
                       />
@@ -375,7 +375,7 @@ const CommentCard: React.FC<CommentCardProps> = ({
         <div className='flex items-center gap-2'>
           <Link to={`/profile/${comment.author.username}`}>
             <img
-              src={comment.author.avatarUrl ?? '/images/profile-picture.png'}
+              src={comment.author.avatarUrl || '/images/profile-picture.png'}
               alt={comment.author.name}
               className='size-10 rounded-full'
             />

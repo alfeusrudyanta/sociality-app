@@ -31,7 +31,7 @@ export const FloatingMenu = () => {
   return (
     <div
       className={cn(
-        'fixed bottom-4 left-1/2 w-full -translate-x-1/2 px-6 transition-all duration-300 md:bottom-8 md:max-w-90',
+        'fixed bottom-4 left-1/2 h-16 w-full max-w-86.25 -translate-x-1/2 px-6 transition-all duration-300 md:bottom-8 md:h-20 md:max-w-90',
         visible
           ? 'translate-y-0 opacity-100'
           : 'pointer-events-none translate-y-24 opacity-0'
@@ -62,7 +62,7 @@ export const FloatingMenu = () => {
         </Link>
 
         {/* Add Post */}
-        <Link to='/addPost'>
+        <Link to='/add-post'>
           <Button size='button' className='size-12'>
             <Plus />
           </Button>
@@ -83,7 +83,7 @@ export const FloatingMenu = () => {
             className={cn(
               'group-hover:text-primary-200/90 transition-all',
               pathname === '/my-profile' &&
-                'text-primary-200 text-sm-bold md:text-md-bold'
+                'text-primary-200! text-sm-bold md:text-md-bold'
             )}
           >
             Profile

@@ -6,7 +6,6 @@ import { useFeeds } from '@/hook/use-feeds';
 import { usePosts } from '@/hook/use-posts';
 import { FeedsTab } from './components/feeds-tab';
 import { ExploreTab } from './components/explore-tab';
-import { FloatingMenu } from './components/floating-menu';
 
 export const HomePage = () => {
   const feeds = useFeeds();
@@ -63,8 +62,6 @@ export const HomePage = () => {
           </TabsContent>
         </Tabs>
       </div>
-
-      <FloatingMenu />
     </Section>
   );
 };

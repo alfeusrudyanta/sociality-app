@@ -10,6 +10,8 @@ import { ScrollToTop } from '@/lib/scroll-to-top';
 import { LoginPage } from '@/features/login-page';
 import { RegisterPage } from '@/features/register-page';
 import { HomePage } from '@/features/home-page';
+import { AddPostPage } from '@/features/add-post-page';
+import { FloatingMenu } from '@/components/shared/floating-menu';
 
 const AuthLayout = () => {
   return (
@@ -24,6 +26,16 @@ const AppLayout = () => {
     <div className='text-neutral-25 flex min-h-screen flex-col bg-black'>
       <header />
       <Outlet />
+      <FloatingMenu />
+    </div>
+  );
+};
+
+const AppLayoutWithoutMenu = () => {
+  return (
+    <div className='text-neutral-25 flex min-h-screen flex-col bg-black'>
+      <header />
+      <Outlet />
     </div>
   );
 };
@@ -34,23 +46,27 @@ export const App = () => {
       <ScrollToTop />
 
       <Routes>
-        {/* Auth routes */}
+        {/* Auth */}
         <Route element={<AuthLayout />}>
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
-          <Route path='*' element={<Navigate to='/login' />} />
         </Route>
 
-        {/* App routes (with header) */}
+        {/* App with menu */}
         <Route element={<AppLayout />}>
           <Route path='/' element={<HomePage />} />
-          <Route path='/search' element={<div />} />
           <Route path='/my-profile' element={<div />} />
-          <Route path='/add-post' element={<div />} />
           <Route path='/update-profile' element={<div />} />
           <Route path='/profile/:username' element={<div />} />
-          <Route path='*' element={<Navigate to='/login' />} />
         </Route>
+
+        {/* App without menu */}
+        <Route element={<AppLayoutWithoutMenu />}>
+          <Route path='/add-post' element={<AddPostPage />} />
+        </Route>
+
+        {/* Fallback */}
+        <Route path='*' element={<Navigate to='/login' />} />
       </Routes>
     </BrowserRouter>
   );

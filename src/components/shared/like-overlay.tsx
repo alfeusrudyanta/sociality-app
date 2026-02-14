@@ -105,7 +105,7 @@ const LikeRow: React.FC<LikeRowProps> = ({ likes, postId }) => {
       <Link to={`/profile/${likes.username}`}>
         <div className='flex items-center gap-2'>
           <img
-            src={likes.avatarUrl ?? '/images/profile-picture.png'}
+            src={likes.avatarUrl || '/images/profile-picture.png'}
             alt={likes.name}
             className='size-12 rounded-full'
           />

@@ -7,6 +7,7 @@ import { mePostskeys, meProfilekeys } from './use-my-profile';
 import { savedPostKeys } from './use-saves';
 import { meLikesKeys } from './use-likes';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 export const postsKeys = {
   all: ['posts'] as const,
@@ -37,6 +38,8 @@ export const usePosts = () => {
 };
 
 export const usePostPost = () => {
+  const navigate = useNavigate();
+
   return useMutation({
     mutationFn: (body: PostPostRequest) => {
       return apiPosts.postPost(body);
@@ -47,6 +50,7 @@ export const usePostPost = () => {
       queryClient.invalidateQueries({ queryKey: meProfilekeys.all });
       queryClient.invalidateQueries({ queryKey: mePostskeys.all });
       queryClient.invalidateQueries({ queryKey: feedKeys.all });
+      navigate('/');
     },
 
     onError: () => {

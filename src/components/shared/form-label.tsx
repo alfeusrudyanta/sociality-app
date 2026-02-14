@@ -39,9 +39,11 @@ export const FormLabel: React.FC<FormLabelProps> = ({
         )}
       />
 
-      <span className='text-sm-medium text-accent-red tracking-[-0.02em]'>
-        {error}
-      </span>
+      {error && (
+        <span className='text-sm-medium md:text-sm-medium text-accent-red tracking-[-0.03em]'>
+          {error}
+        </span>
+      )}
     </label>
   );
 };

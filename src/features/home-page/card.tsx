@@ -29,7 +29,7 @@ export const Card: React.FC<CardProps> = ({ post }) => {
       <div className='flex items-center gap-2 md:gap-3'>
         <Link to={`/profile/${post.author.username}`}>
           <img
-            src={post.author.avatarUrl ?? '/images/profile-picture.png'}
+            src={post.author.avatarUrl || '/images/profile-picture.png'}
             alt={post.author.name}
             className='size-11 rounded-full md:size-16'
           />
@@ -54,7 +54,7 @@ export const Card: React.FC<CardProps> = ({ post }) => {
         className='aspect-square max-h-150 w-full max-w-150 overflow-hidden rounded-md'
       >
         <img
-          src={post.imageUrl ?? '/images/post-img.png'}
+          src={post.imageUrl || '/images/post-img.png'}
           alt='Feed Image'
           className='h-full w-full cursor-pointer object-cover object-center'
         />

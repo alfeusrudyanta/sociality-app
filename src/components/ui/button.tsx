@@ -5,13 +5,15 @@ import { Slot } from 'radix-ui';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-md-bold disabled:pointer-events-none tracking-[-0.02em] shrink-0 transition-all outline-none cursor-pointer transition-all',
+  'flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-md-bold disabled:pointer-events-none shrink-0 transition-all outline-none cursor-pointer transition-all',
   {
     variants: {
       variant: {
-        default: 'bg-primary-300 hover:bg-primary-300/90 text-neutral-25',
+        default:
+          'bg-primary-300 hover:bg-primary-300/90 text-neutral-25 tracking-[-0.02em]',
         transparant:
           'text-neutral-25 tracking-[0.01em] border border-neutral-900',
+        gray: 'bg-neutral-900 hover:bg-neutral-900/90 border-neutral-900 border gap-1.5 rounded-lg text-sm-medium text-neutral-25 tracking-[-0.03em]',
       },
       size: {
         default: 'h-11 md:h-12 w-full',
