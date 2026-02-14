@@ -12,6 +12,8 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CircleCheck } from 'lucide-react';
 import {
+  followersKeys,
+  followingKeys,
   useDeleteFollow,
   useGetFollowers,
   useGetFollowing,
@@ -20,6 +22,7 @@ import {
 import { LoadingSpinner } from './loading-spinner';
 import type { UserSearch } from '@/types/api';
 import { useMe } from '@/hook/use-my-profile';
+import { queryClient } from '@/lib/query-client';
 
 type FollowOverlayProps = {
   username: string;
@@ -59,7 +62,7 @@ export const FollowOverlay: React.FC<FollowOverlayProps> = ({
         <div className='hide-scrollbar flex flex-col gap-5 overflow-y-auto scroll-smooth'>
           {user.data?.pages.map((page) =>
             page.data.users.map((user) => (
-              <FollowRow key={user.id} user={user} />
+              <FollowRow key={user.id} user={user} username={username} />
             ))
           )}
 
@@ -78,9 +81,10 @@ export const FollowOverlay: React.FC<FollowOverlayProps> = ({
 
 type LikeRowProps = {
   user: UserSearch;
+  username: string;
 };
 
-const FollowRow: React.FC<LikeRowProps> = ({ user }) => {
+const FollowRow: React.FC<LikeRowProps> = ({ user, username }) => {
   const { data } = useMe();
   const follow = usePostFollow(user.username);
   const unfollow = useDeleteFollow(user.username);
@@ -91,9 +95,27 @@ const FollowRow: React.FC<LikeRowProps> = ({ user }) => {
     if (follow.isPending || unfollow.isPending) return;
 
     if (user.isFollowedByMe) {
-      unfollow.mutate();
+      unfollow.mutate(undefined, {
+        onSuccess: () => {
+          queryClient.invalidateQueries({
+            queryKey: followersKeys.list(username),
+          });
+          queryClient.invalidateQueries({
+            queryKey: followingKeys.list(username),
+          });
+        },
+      });
     } else {
-      follow.mutate();
+      follow.mutate(undefined, {
+        onSuccess: () => {
+          queryClient.invalidateQueries({
+            queryKey: followersKeys.list(username),
+          });
+          queryClient.invalidateQueries({
+            queryKey: followingKeys.list(username),
+          });
+        },
+      });
     }
   };
 
