@@ -15,8 +15,8 @@ import {
   followersKeys,
   followingKeys,
   useDeleteFollow,
-  useGetFollowers,
-  useGetFollowing,
+  useFollowing,
+  useFollowers,
   usePostFollow,
 } from '@/hook/use-follow';
 import { LoadingSpinner } from './loading-spinner';
@@ -37,8 +37,8 @@ export const FollowOverlay: React.FC<FollowOverlayProps> = ({
   isFollower = true,
   setIsOpen,
 }) => {
-  const followers = useGetFollowers(username);
-  const following = useGetFollowing(username);
+  const followers = useFollowers(username);
+  const following = useFollowing(username);
   const { ref, inView } = useInView();
 
   const user = isFollower ? followers : following;

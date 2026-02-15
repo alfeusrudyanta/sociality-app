@@ -55,7 +55,7 @@ export const ProfilePage = () => {
               onClick={() => setIsGallery(true)}
               value='gallery'
               className={cn(
-                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25 data-[state=active]:border-neutral-25 md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
+                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25! data-[state=active]:border-neutral-25! md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex w-full! flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
               )}
             >
               <LayoutGrid
@@ -71,7 +71,7 @@ export const ProfilePage = () => {
               onClick={() => setIsGallery(false)}
               value='liked'
               className={cn(
-                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25 data-[state=active]:border-neutral-25 md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
+                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25! data-[state=active]:border-neutral-25! md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex w-full! flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
               )}
             >
               <Heart
@@ -84,11 +84,11 @@ export const ProfilePage = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value='gallery'>
+          <TabsContent value='gallery' className='w-full'>
             <GalleryComponent username={username!} />
           </TabsContent>
 
-          <TabsContent value='liked'>
+          <TabsContent value='liked' className='w-full'>
             <LikedComponent username={username!} />
           </TabsContent>
         </Tabs>

@@ -1,16 +1,13 @@
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
 
-type ProtectedRouteProps = {
-  children: React.ReactNode;
-};
-
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const token = Cookies.get('token');
+export const ProtectedRoute = () => {
+  const token = !!Cookies.get('token');
+  const location = useLocation();
 
   if (!token) {
-    return <Navigate to='/login' replace />;
+    return <Navigate to='/login' replace state={{ from: location }} />;
   }
 
-  return <>{children}</>;
+  return <Outlet />;
 };

@@ -62,7 +62,7 @@ export const useDeleteFollow = (username: string) => {
   });
 };
 
-export const useGetFollowers = (username: string) => {
+export const useFollowers = (username: string) => {
   return useInfiniteQuery({
     initialPageParam: 1,
     queryKey: followersKeys.list(username),
@@ -86,7 +86,7 @@ export const useGetFollowers = (username: string) => {
   });
 };
 
-export const useGetFollowing = (username: string) => {
+export const useFollowing = (username: string) => {
   return useInfiniteQuery({
     initialPageParam: 1,
     queryKey: followingKeys.list(username),
@@ -110,7 +110,7 @@ export const useGetFollowing = (username: string) => {
   });
 };
 
-export const useGetMeFollowers = () => {
+export const useMeFollowers = () => {
   return useInfiniteQuery({
     initialPageParam: 1,
     queryKey: meFollowersKeys.all,
@@ -133,7 +133,7 @@ export const useGetMeFollowers = () => {
   });
 };
 
-export const useGetMeFollowing = () => {
+export const useMeFollowing = () => {
   return useInfiniteQuery({
     initialPageParam: 1,
     queryKey: meFollowingKeys.all,

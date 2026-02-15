@@ -62,7 +62,7 @@ export const useDeleteLike = (postId: number) => {
   });
 };
 
-export const useGetPostLikes = (postId: number) => {
+export const useLikes = (postId: number) => {
   return useInfiniteQuery({
     initialPageParam: 1,
     queryKey: likesKeys.list(postId),
@@ -86,7 +86,7 @@ export const useGetPostLikes = (postId: number) => {
   });
 };
 
-export const useGetMePostLikes = () => {
+export const useMeLikes = () => {
   return useInfiniteQuery({
     initialPageParam: 1,
     queryKey: meLikesKeys.all,

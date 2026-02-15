@@ -1,4 +1,4 @@
-import { useDeleteLike, usePostLike } from '@/hook/use-likes';
+import { useDeleteLike, useLikes, usePostLike } from '@/hook/use-likes';
 import { useDeleteSave, usePostSave, useSave } from '@/hook/use-saves';
 import { cn } from '@/lib/utils';
 import type { PostSummary } from '@/types/api';
@@ -6,13 +6,16 @@ import { Bookmark, Heart, MessageSquareMore, Send } from 'lucide-react';
 import { useState } from 'react';
 import { LikeOverlay } from '@/components/shared/like-overlay';
 import { CommentOverlay } from './comment-overlay';
+import { useMe } from '@/hook/use-my-profile';
 
 type LikeCommentSaveProps = {
   post: PostSummary;
 };
 
 export const LikeCommentSave: React.FC<LikeCommentSaveProps> = ({ post }) => {
-  const { data } = useSave();
+  const saveData = useSave();
+  const meData = useMe();
+  const likedData = useLikes(post.id);
 
   const like = usePostLike(post.id);
   const unlike = useDeleteLike(post.id);
@@ -22,14 +25,18 @@ export const LikeCommentSave: React.FC<LikeCommentSaveProps> = ({ post }) => {
   const [isLikeOpen, setIsLikeOpen] = useState<boolean>(false);
   const [isCommentOpen, setIsCommentOpen] = useState<boolean>(false);
 
-  const saved = data?.pages.some((page) =>
+  const saved = saveData.data?.pages.some((page) =>
     page.data.posts.some((p) => p.id === post.id)
+  );
+
+  const likedByMe = likedData.data?.pages.some((page) =>
+    page.data.users.some((u) => u.id === meData.data?.data.profile.id)
   );
 
   const handleLike = () => {
     if (like.isPending || unlike.isPending) return;
 
-    if (post.likedByMe) {
+    if (likedByMe) {
       unlike.mutate();
       return;
     }
@@ -55,7 +62,7 @@ export const LikeCommentSave: React.FC<LikeCommentSaveProps> = ({ post }) => {
           <Heart
             className={cn(
               'stroke-neutral-25 size-6 cursor-pointer',
-              post.likedByMe && 'fill-accent-red stroke-accent-red'
+              likedByMe && 'fill-accent-red stroke-accent-red'
             )}
             onClick={handleLike}
           />
@@ -96,6 +103,7 @@ export const LikeCommentSave: React.FC<LikeCommentSaveProps> = ({ post }) => {
         isOpen={isCommentOpen}
         setIsOpen={setIsCommentOpen}
       />
+
       <LikeOverlay id={post.id} isOpen={isLikeOpen} setIsOpen={setIsLikeOpen} />
     </div>
   );

@@ -1,4 +1,4 @@
-import { likesKeys, useGetPostLikes } from '@/hook/use-likes';
+import { likesKeys, useLikes } from '@/hook/use-likes';
 import {
   Dialog,
   DialogContent,
@@ -28,8 +28,7 @@ export const LikeOverlay: React.FC<LikeOverlayProps> = ({
   setIsOpen,
 }) => {
   const { ref, inView } = useInView();
-  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
-    useGetPostLikes(id);
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } = useLikes(id);
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {

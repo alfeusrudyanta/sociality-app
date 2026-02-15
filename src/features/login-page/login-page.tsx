@@ -1,4 +1,4 @@
-import { useLogin } from '@/hook/use-auth';
+import { usePostLogin } from '@/hook/use-auth';
 import { useState } from 'react';
 import { loginSchema } from './schema';
 import type { LoginFormErrors } from './type';
@@ -8,7 +8,7 @@ import { LoadingSpinner } from '@/components/shared/loading-spinner';
 import { FormLabel } from '@/components/shared/form-label';
 
 export const LoginPage = () => {
-  const { mutate, isPending } = useLogin();
+  const { mutate, isPending } = usePostLogin();
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');

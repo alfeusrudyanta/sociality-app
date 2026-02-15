@@ -53,13 +53,6 @@ export const HomePage = () => {
             {allPosts.length === 0 && (
               <div className='flex items-center justify-center pt-10'>
                 <span className='text-md-bold md:text-xl-bold'>
-                  Start by creating a new post!
-                </span>
-              </div>
-            )}
-            {allPosts.length === 0 && (
-              <div className='flex items-center justify-center pt-10'>
-                <span className='text-md-bold md:text-xl-bold'>
                   Be the first to post your moment!
                 </span>
               </div>

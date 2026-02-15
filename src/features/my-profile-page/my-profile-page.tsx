@@ -39,7 +39,7 @@ export const MyProfilePage = () => {
               onClick={() => setIsGallery(true)}
               value='gallery'
               className={cn(
-                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25 data-[state=active]:border-neutral-25 md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
+                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25! data-[state=active]:border-neutral-25! md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex w-full! flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
               )}
             >
               <LayoutGrid
@@ -55,7 +55,7 @@ export const MyProfilePage = () => {
               onClick={() => setIsGallery(false)}
               value='saved'
               className={cn(
-                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25 data-[state=active]:border-neutral-25 md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
+                'text-sm-medium md:text-md-medium data-[state=active]:text-neutral-25! data-[state=active]:border-neutral-25! md:data-[state=active]:text-md-bold data-[state=active]:text-sm-bold mx-auto flex w-full! flex-1 items-center justify-center gap-2 rounded-none text-neutral-400 duration-75 data-[state=active]:border-b-2 data-[state=active]:bg-transparent'
               )}
             >
               <Bookmark
@@ -68,11 +68,11 @@ export const MyProfilePage = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value='gallery'>
+          <TabsContent value='gallery' className='w-full'>
             <GalleryComponent />
           </TabsContent>
 
-          <TabsContent value='saved'>
+          <TabsContent value='saved' className='w-full'>
             <SavedComponent />
           </TabsContent>
         </Tabs>

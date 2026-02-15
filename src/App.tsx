@@ -16,6 +16,8 @@ import { MyProfilePage } from '@/features/my-profile-page';
 import { ProfilePage } from '@/features/profile-page';
 import { UpdateProfilePage } from '@/features/update-profile-page';
 import { Header } from '@/components/layout/header';
+import { ProtectedRoute } from '@/lib/protected-route';
+import { PublicRoute } from '@/lib/public-route';
 
 const AuthLayout = () => {
   return (
@@ -51,22 +53,26 @@ export const App = () => {
 
       <Routes>
         {/* Auth */}
-        <Route element={<AuthLayout />}>
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
+        <Route element={<PublicRoute />}>
+          <Route element={<AuthLayout />}>
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+          </Route>
         </Route>
 
-        {/* App with menu */}
-        <Route element={<AppLayout />}>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/my-profile' element={<MyProfilePage />} />
-          <Route path='/update-profile' element={<UpdateProfilePage />} />
-          <Route path='/profile/:username' element={<ProfilePage />} />
-        </Route>
+        <Route element={<ProtectedRoute />}>
+          {/* App with menu */}
+          <Route element={<AppLayout />}>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/my-profile' element={<MyProfilePage />} />
+            <Route path='/update-profile' element={<UpdateProfilePage />} />
+            <Route path='/profile/:username' element={<ProfilePage />} />
+          </Route>
 
-        {/* App without menu */}
-        <Route element={<AppLayoutWithoutMenu />}>
-          <Route path='/add-post' element={<AddPostPage />} />
+          {/* App without menu */}
+          <Route element={<AppLayoutWithoutMenu />}>
+            <Route path='/add-post' element={<AddPostPage />} />
+          </Route>
         </Route>
 
         {/* Fallback */}

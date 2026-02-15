@@ -13,7 +13,7 @@ const handleToken = (token: string) => {
   });
 };
 
-export const useRegister = () => {
+export const usePostRegister = () => {
   const navigate = useNavigate();
 
   return useMutation({
@@ -34,7 +34,7 @@ export const useRegister = () => {
   });
 };
 
-export const useLogin = () => {
+export const usePostLogin = () => {
   const navigate = useNavigate();
 
   return useMutation({
