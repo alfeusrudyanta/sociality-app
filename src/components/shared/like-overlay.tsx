@@ -122,7 +122,7 @@ const LikeRow: React.FC<LikeRowProps> = ({ likes, postId }) => {
               {likes.name}
             </span>
             <span className='text-sm-regular tracking-[-0.02em] text-neutral-400'>
-              {likes.username}
+              @{likes.username}
             </span>
           </div>
         </div>
