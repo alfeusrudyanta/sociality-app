@@ -67,7 +67,7 @@ export const Card: React.FC<CardProps> = ({ post }) => {
       <div className='flex w-[88%] flex-col md:gap-1'>
         <Link to={`/profile/${post.author.username}`}>
           <span className='md:text-md-bold text-sm-bold tracking-[-0.01em] md:tracking-[-0.02em]'>
-            {post.author.username}
+            {post.author.name}
           </span>
         </Link>
 

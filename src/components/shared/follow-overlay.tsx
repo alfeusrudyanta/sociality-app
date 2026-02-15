@@ -140,7 +140,7 @@ const FollowRow: React.FC<LikeRowProps> = ({ user, username }) => {
               {user.name}
             </span>
             <span className='text-sm-regular tracking-[-0.02em] text-neutral-400'>
-              {user.username}
+              @{user.username}
             </span>
           </div>
         </div>
