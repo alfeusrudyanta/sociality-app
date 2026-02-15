@@ -1,4 +1,4 @@
-import type { GetMeResponse } from '@/types/api-my-profile';
+import type { GetMeResponse } from '../../../types/api-my-profile';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

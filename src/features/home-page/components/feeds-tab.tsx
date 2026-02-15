@@ -1,4 +1,4 @@
-import type { GetFeedResponse } from '@/types/api-feeds';
+import type { GetFeedResponse } from '../../../types/api-feeds';
 import type {
   DefinedInfiniteQueryObserverResult,
   InfiniteData,
@@ -7,7 +7,7 @@ import type {
 import { Card } from '../card';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
+import { LoadingSpinner } from '../../../components/shared/loading-spinner';
 
 type FeedsTabProps = {
   feeds:

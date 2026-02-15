@@ -1,4 +1,4 @@
-import { useUserSearch } from '@/hook/use-users';
+import { useUserSearch } from '../../../../hook/use-users';
 import { Search, XIcon } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';

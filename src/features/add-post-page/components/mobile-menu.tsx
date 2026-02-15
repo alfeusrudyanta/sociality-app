@@ -1,4 +1,4 @@
-import { useMe } from '@/hook/use-my-profile';
+import { useMe } from '../../../hook/use-my-profile';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

@@ -1,12 +1,12 @@
-import { useDeleteLike, useLikes, usePostLike } from '@/hook/use-likes';
-import { useDeleteSave, usePostSave, useSave } from '@/hook/use-saves';
-import { cn } from '@/lib/utils';
-import type { PostSummary } from '@/types/api';
+import { useDeleteLike, useLikes, usePostLike } from '../../hook/use-likes';
+import { useDeleteSave, usePostSave, useSave } from '../../hook/use-saves';
+import { cn } from '../../lib/utils';
+import type { PostSummary } from '../../types/api';
 import { Bookmark, Heart, MessageSquareMore, Send } from 'lucide-react';
 import { useState } from 'react';
-import { LikeOverlay } from '@/components/shared/like-overlay';
+import { LikeOverlay } from '../../components/shared/like-overlay';
 import { CommentOverlay } from './comment-overlay';
-import { useMe } from '@/hook/use-my-profile';
+import { useMe } from '../../hook/use-my-profile';
 
 type LikeCommentSaveProps = {
   post: PostSummary;

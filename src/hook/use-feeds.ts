@@ -1,4 +1,4 @@
-import { apiFeed } from '@/api/api-feeds';
+import { apiFeed } from '../api/api-feeds';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 export const feedKeys = {

@@ -6,18 +6,18 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import { ScrollToTop } from '@/lib/scroll-to-top';
-import { LoginPage } from '@/features/login-page';
-import { RegisterPage } from '@/features/register-page';
-import { HomePage } from '@/features/home-page';
-import { AddPostPage } from '@/features/add-post-page';
-import { FloatingMenu } from '@/components/shared/floating-menu';
-import { MyProfilePage } from '@/features/my-profile-page';
-import { ProfilePage } from '@/features/profile-page';
-import { UpdateProfilePage } from '@/features/update-profile-page';
-import { Header } from '@/components/layout/header';
-import { ProtectedRoute } from '@/lib/protected-route';
-import { PublicRoute } from '@/lib/public-route';
+import { ScrollToTop } from './lib/scroll-to-top';
+import { LoginPage } from './features/login-page';
+import { RegisterPage } from './features/register-page';
+import { HomePage } from './features/home-page';
+import { AddPostPage } from './features/add-post-page';
+import { FloatingMenu } from './components/shared/floating-menu';
+import { MyProfilePage } from './features/my-profile-page';
+import { ProfilePage } from './features/profile-page';
+import { UpdateProfilePage } from './features/update-profile-page';
+import { Header } from './components/layout/header';
+import { ProtectedRoute } from './lib/protected-route';
+import { PublicRoute } from './lib/public-route';
 
 const AuthLayout = () => {
   return (

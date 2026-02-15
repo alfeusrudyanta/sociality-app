@@ -4,21 +4,21 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { cn } from '@/lib/utils';
+} from '../../components/ui/dialog';
+import { cn } from '../../lib/utils';
 import dayjs from 'dayjs';
 import { Ellipsis, Smile } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
-import { useDeletePost, usePost } from '@/hook/use-posts';
-import { useMe } from '@/hook/use-my-profile';
+import { useDeletePost, usePost } from '../../hook/use-posts';
+import { useMe } from '../../hook/use-my-profile';
 import { useEffect, useRef, useState } from 'react';
 import {
   useComments,
   useDeleteComment,
   usePostComment,
-} from '@/hook/use-comments';
-import type { Comment } from '@/types/api';
+} from '../../hook/use-comments';
+import type { Comment } from '../../types/api';
 import { useInView } from 'react-intersection-observer';
 import { LoadingSpinner } from './loading-spinner';
 import EmojiPicker, { Theme } from 'emoji-picker-react';

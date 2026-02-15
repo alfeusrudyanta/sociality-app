@@ -1,4 +1,4 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   GetUserLikesParams,
   GetUserLikesResponse,
@@ -7,7 +7,7 @@ import type {
   GetUserSearchParams,
   GetUserSearchResponse,
   GetUserProfileResponse,
-} from '@/types/api-users';
+} from '../types/api-users';
 
 export const apiUsers = {
   getUserLikes: async (

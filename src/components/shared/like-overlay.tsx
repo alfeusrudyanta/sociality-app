@@ -1,19 +1,19 @@
-import { likesKeys, useLikes } from '@/hook/use-likes';
+import { likesKeys, useLikes } from '../../hook/use-likes';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from '../../components/ui/dialog';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Button } from '../../components/ui/button';
+import { cn } from '../../lib/utils';
 import { CircleCheck } from 'lucide-react';
-import { useDeleteFollow, usePostFollow } from '@/hook/use-follow';
-import { queryClient } from '@/lib/query-client';
+import { useDeleteFollow, usePostFollow } from '../../hook/use-follow';
+import { queryClient } from '../../lib/query-client';
 import { LoadingSpinner } from './loading-spinner';
 
 type LikeOverlayProps = {

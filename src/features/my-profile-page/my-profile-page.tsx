@@ -1,10 +1,15 @@
-import { ErrorPage } from '@/components/page/error-page';
-import { LoadingPage } from '@/components/page/loading-page';
-import { ProfileMenu } from '@/components/shared/profile-menu';
-import { Section } from '@/components/shared/section';
-import { TabsList, TabsTrigger, TabsContent, Tabs } from '@/components/ui/tabs';
-import { useMe } from '@/hook/use-my-profile';
-import { cn } from '@/lib/utils';
+import { ErrorPage } from '../../components/page/error-page';
+import { LoadingPage } from '../../components/page/loading-page';
+import { ProfileMenu } from '../../components/shared/profile-menu';
+import { Section } from '../../components/shared/section';
+import {
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Tabs,
+} from '../../components/ui/tabs';
+import { useMe } from '../../hook/use-my-profile';
+import { cn } from '../../lib/utils';
 import { Bookmark, LayoutGrid } from 'lucide-react';
 import { useState } from 'react';
 import { GalleryComponent } from './components/gallery-component';

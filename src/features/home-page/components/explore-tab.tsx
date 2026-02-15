@@ -1,4 +1,4 @@
-import type { GetPostsResponse } from '@/types/api-posts';
+import type { GetPostsResponse } from '../../../types/api-posts';
 import type {
   DefinedInfiniteQueryObserverResult,
   InfiniteData,
@@ -7,7 +7,7 @@ import type {
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Card } from '../card';
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
+import { LoadingSpinner } from '../../../components/shared/loading-spinner';
 
 type ExploreTabProps = {
   explore:

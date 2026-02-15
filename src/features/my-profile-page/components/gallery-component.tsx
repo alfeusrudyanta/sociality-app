@@ -1,6 +1,6 @@
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { ProfilePostItem } from '@/components/shared/profile-post-item';
-import { useMePosts } from '@/hook/use-my-profile';
+import { LoadingSpinner } from '../../../components/shared/loading-spinner';
+import { ProfilePostItem } from '../../../components/shared/profile-post-item';
+import { useMePosts } from '../../../hook/use-my-profile';
 
 export const GalleryComponent = () => {
   const { data, isPending } = useMePosts();

@@ -1,6 +1,6 @@
-import { apiPosts } from '@/api/api-posts';
-import { queryClient } from '@/lib/query-client';
-import type { PostPostRequest } from '@/types/api-posts';
+import { apiPosts } from '../api/api-posts';
+import { queryClient } from '../lib/query-client';
+import type { PostPostRequest } from '../types/api-posts';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
 import { feedKeys } from './use-feeds';
 import { mePostskeys, meProfilekeys } from './use-my-profile';

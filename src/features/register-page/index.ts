@@ -1,1 +1,1 @@
-export { RegisterPage } from '@/features/register-page/register-page';
+export { RegisterPage } from '../../features/register-page/register-page';

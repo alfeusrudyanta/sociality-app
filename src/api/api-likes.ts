@@ -1,4 +1,4 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   PostLikeResponse,
   DeleteLikeResponse,
@@ -6,7 +6,7 @@ import type {
   GetPostLikesResponse,
   GetMeLikesParams,
   GetMeLikesResponse,
-} from '@/types/api-likes';
+} from '../types/api-likes';
 
 export const apiLikes = {
   postLike: async (id: number): Promise<PostLikeResponse> => {

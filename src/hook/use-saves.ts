@@ -1,5 +1,5 @@
-import { apiSaves } from '@/api/api-saves';
-import { queryClient } from '@/lib/query-client';
+import { apiSaves } from '../api/api-saves';
+import { queryClient } from '../lib/query-client';
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 

@@ -1,11 +1,11 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   GetMeResponse,
   PatchMeRequest,
   PatchMeResponse,
   GetMePostsParams,
   GetMePostsResponse,
-} from '@/types/api-my-profile';
+} from '../types/api-my-profile';
 
 export const apiMe = {
   getMe: async (): Promise<GetMeResponse> => {

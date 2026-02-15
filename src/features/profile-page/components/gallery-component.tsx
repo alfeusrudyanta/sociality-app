@@ -1,6 +1,6 @@
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { ProfilePostItem } from '@/components/shared/profile-post-item';
-import { useUserPosts } from '@/hook/use-users';
+import { LoadingSpinner } from '../../../components/shared/loading-spinner';
+import { ProfilePostItem } from '../../../components/shared/profile-post-item';
+import { useUserPosts } from '../../../hook/use-users';
 
 type GalleryComponentProps = {
   username: string;

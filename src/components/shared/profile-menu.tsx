@@ -1,9 +1,9 @@
-import type { UserProfile, UserStats } from '@/types/api';
+import type { UserProfile, UserStats } from '../../types/api';
 import { CircleCheck, Send } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useNavigate } from 'react-router-dom';
-import { cn } from '@/lib/utils';
-import { useDeleteFollow, usePostFollow } from '@/hook/use-follow';
+import { cn } from '../../lib/utils';
+import { useDeleteFollow, usePostFollow } from '../../hook/use-follow';
 import { useState } from 'react';
 import { FollowOverlay } from './follow-overlay';
 

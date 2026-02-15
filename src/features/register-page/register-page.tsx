@@ -1,10 +1,10 @@
-import { usePostRegister } from '@/hook/use-auth';
+import { usePostRegister } from '../../hook/use-auth';
 import { useState } from 'react';
 import type { RegisterFormErrors } from './type';
 import { registerSchema } from './schema';
-import { FormLabel } from '@/components/shared/form-label';
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { Button } from '@/components/ui/button';
+import { FormLabel } from '../../components/shared/form-label';
+import { LoadingSpinner } from '../../components/shared/loading-spinner';
+import { Button } from '../../components/ui/button';
 import { Link } from 'react-router-dom';
 
 export const RegisterPage = () => {

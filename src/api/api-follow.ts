@@ -1,4 +1,4 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   PostFollowResponse,
   DeleteFollowResponse,
@@ -10,7 +10,7 @@ import type {
   GetMeFollowersResponse,
   GetMeFollowingParams,
   GetMeFollowingResponse,
-} from '@/types/api-follow';
+} from '../types/api-follow';
 
 export const apiFollow = {
   postFollow: async (username: string): Promise<PostFollowResponse> => {

@@ -1,6 +1,6 @@
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { ProfilePostItem } from '@/components/shared/profile-post-item';
-import { useUserLikes } from '@/hook/use-users';
+import { LoadingSpinner } from '../../../components/shared/loading-spinner';
+import { ProfilePostItem } from '../../../components/shared/profile-post-item';
+import { useUserLikes } from '../../../hook/use-users';
 
 type LikedComponentProps = {
   username: string;

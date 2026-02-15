@@ -1,9 +1,9 @@
-import type { PostLoginRequest, PostRegisterRequest } from '@/types/api-auth';
-import { apiAuth } from '@/api/api-auth';
+import type { PostLoginRequest, PostRegisterRequest } from '../types/api-auth';
+import { apiAuth } from '../api/api-auth';
 import { useMutation } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { queryClient } from '@/lib/query-client';
+import { queryClient } from '../lib/query-client';
 import { toast } from 'sonner';
 
 const handleToken = (token: string) => {

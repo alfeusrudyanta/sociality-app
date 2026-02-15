@@ -1,5 +1,5 @@
-import { apiFollow } from '@/api/api-follow';
-import { queryClient } from '@/lib/query-client';
+import { apiFollow } from '../api/api-follow';
+import { queryClient } from '../lib/query-client';
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { feedKeys } from './use-feeds';

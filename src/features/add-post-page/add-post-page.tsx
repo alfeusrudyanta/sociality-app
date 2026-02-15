@@ -1,13 +1,13 @@
-import { usePostPost } from '@/hook/use-posts';
+import { usePostPost } from '../../hook/use-posts';
 import { useRef, useState } from 'react';
 import type { AddPostError } from './type';
 import { addPostSchema } from './schema';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowUpToLine, CloudUpload, Trash } from 'lucide-react';
 import { MobileMenu } from './components/mobile-menu';
-import { Section } from '@/components/shared/section';
-import { Button } from '@/components/ui/button';
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
+import { Section } from '../../components/shared/section';
+import { Button } from '../../components/ui/button';
+import { LoadingSpinner } from '../../components/shared/loading-spinner';
 
 export const AddPostPage = () => {
   const { mutate, isPending } = usePostPost();

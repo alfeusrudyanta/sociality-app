@@ -1,1 +1,1 @@
-export { ProfilePage } from '@/features/profile-page/profile-page';
+export { ProfilePage } from '../../features/profile-page/profile-page';

@@ -1,6 +1,6 @@
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { ProfilePostItem } from '@/components/shared/profile-post-item';
-import { useSave } from '@/hook/use-saves';
+import { LoadingSpinner } from '../../../components/shared/loading-spinner';
+import { ProfilePostItem } from '../../../components/shared/profile-post-item';
+import { useSave } from '../../../hook/use-saves';
 
 export const SavedComponent = () => {
   const { data, isPending } = useSave();

@@ -1,10 +1,10 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   PostLoginRequest,
   PostLoginResponse,
   PostRegisterRequest,
   PostRegisterResponse,
-} from '@/types/api-auth';
+} from '../types/api-auth';
 
 export const apiAuth = {
   postRegister: async (

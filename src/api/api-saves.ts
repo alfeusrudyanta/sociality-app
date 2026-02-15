@@ -1,10 +1,10 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   PostSaveResponse,
   DeleteSaveResponse,
   GetMeSavedPostsParams,
   GetMeSavedPostsResponse,
-} from '@/types/api-saves';
+} from '../types/api-saves';
 
 export const apiSaves = {
   postSave: async (id: number): Promise<PostSaveResponse> => {

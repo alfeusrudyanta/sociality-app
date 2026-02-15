@@ -1,11 +1,11 @@
-import { usePostLogin } from '@/hook/use-auth';
+import { usePostLogin } from '../../hook/use-auth';
 import { useState } from 'react';
 import { loginSchema } from './schema';
 import type { LoginFormErrors } from './type';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { FormLabel } from '@/components/shared/form-label';
+import { Button } from '../../components/ui/button';
+import { LoadingSpinner } from '../../components/shared/loading-spinner';
+import { FormLabel } from '../../components/shared/form-label';
 
 export const LoginPage = () => {
   const { mutate, isPending } = usePostLogin();

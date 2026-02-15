@@ -1,12 +1,12 @@
-import { apiMe } from '@/api/api-my-profile';
-import { queryClient } from '@/lib/query-client';
-import type { PatchMeRequest } from '@/types/api-my-profile';
+import { apiMe } from '../api/api-my-profile';
+import { queryClient } from '../lib/query-client';
+import type { PatchMeRequest } from '../types/api-my-profile';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
 import { feedKeys } from './use-feeds';
 import { savedPostKeys } from './use-saves';
 import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
-import { setProfile } from '@/store/slices/profile-slice';
+import { setProfile } from '../store/slices/profile-slice';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

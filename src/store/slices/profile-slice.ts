@@ -1,4 +1,4 @@
-import type { UserProfile, UserStats } from '@/types/api';
+import type { UserProfile, UserStats } from '../../types/api';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 import type { RootState } from '../store';

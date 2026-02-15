@@ -4,12 +4,12 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from '../../components/ui/dialog';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Button } from '../../components/ui/button';
+import { cn } from '../../lib/utils';
 import { CircleCheck } from 'lucide-react';
 import {
   followersKeys,
@@ -18,11 +18,11 @@ import {
   useFollowing,
   useFollowers,
   usePostFollow,
-} from '@/hook/use-follow';
+} from '../../hook/use-follow';
 import { LoadingSpinner } from './loading-spinner';
-import type { UserSearch } from '@/types/api';
-import { useMe } from '@/hook/use-my-profile';
-import { queryClient } from '@/lib/query-client';
+import type { UserSearch } from '../../types/api';
+import { useMe } from '../../hook/use-my-profile';
+import { queryClient } from '../../lib/query-client';
 
 type FollowOverlayProps = {
   username: string;

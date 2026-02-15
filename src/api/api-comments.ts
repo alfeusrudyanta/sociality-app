@@ -1,11 +1,11 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   GetCommentsParams,
   GetCommentsResponse,
   PostCommentRequest,
   PostCommentResponse,
   DeleteCommentResponse,
-} from '@/types/api-comments';
+} from '../types/api-comments';
 
 export const apiComments = {
   getComments: async (

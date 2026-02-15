@@ -1,4 +1,4 @@
-import { AxiosInstance } from '@/service/axios';
+import { AxiosInstance } from '../service/axios';
 import type {
   GetPostsParams,
   GetPostsResponse,
@@ -6,7 +6,7 @@ import type {
   PostPostResponse,
   GetPostResponse,
   DeletePostResponse,
-} from '@/types/api-posts';
+} from '../types/api-posts';
 
 export const apiPosts = {
   getPosts: async (params: GetPostsParams): Promise<GetPostsResponse> => {

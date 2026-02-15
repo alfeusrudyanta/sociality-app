@@ -1,1 +1,1 @@
-export { AddPostPage } from '@/features/add-post-page/add-post-page';
+export { AddPostPage } from '../../features/add-post-page/add-post-page';

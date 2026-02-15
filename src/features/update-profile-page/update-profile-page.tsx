@@ -1,14 +1,14 @@
-import { Section } from '@/components/shared/section';
+import { Section } from '../../components/shared/section';
 import { MobileMenu } from './components/mobile-menu';
-import { Button } from '@/components/ui/button';
+import { Button } from '../../components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useMe, usePatchMe } from '@/hook/use-my-profile';
-import { ErrorPage } from '@/components/page/error-page';
-import { LoadingPage } from '@/components/page/loading-page';
+import { useMe, usePatchMe } from '../../hook/use-my-profile';
+import { ErrorPage } from '../../components/page/error-page';
+import { LoadingPage } from '../../components/page/loading-page';
 import { useEffect, useRef, useState } from 'react';
-import { LoadingSpinner } from '@/components/shared/loading-spinner';
-import { FormLabel } from '@/components/shared/form-label';
+import { LoadingSpinner } from '../../components/shared/loading-spinner';
+import { FormLabel } from '../../components/shared/form-label';
 import type { UpdateProfileFormErrors } from './types';
 import { updateProfileSchema } from './schema';
 

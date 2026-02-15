@@ -1,4 +1,4 @@
-import { CommentOverlay } from '@/components/shared/comment-overlay';
+import { CommentOverlay } from '../../components/shared/comment-overlay';
 import { useState } from 'react';
 
 type ProfilePostItemProps = {

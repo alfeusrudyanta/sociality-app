@@ -1,5 +1,5 @@
-import { apiLikes } from '@/api/api-likes';
-import { queryClient } from '@/lib/query-client';
+import { apiLikes } from '../api/api-likes';
+import { queryClient } from '../lib/query-client';
 import { useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import { feedKeys } from './use-feeds';
 import { postsKeys } from './use-posts';

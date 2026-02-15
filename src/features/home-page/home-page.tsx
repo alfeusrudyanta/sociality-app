@@ -1,9 +1,14 @@
-import { ErrorPage } from '@/components/page/error-page';
-import { LoadingPage } from '@/components/page/loading-page';
-import { Section } from '@/components/shared/section';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useFeeds } from '@/hook/use-feeds';
-import { usePosts } from '@/hook/use-posts';
+import { ErrorPage } from '../../components/page/error-page';
+import { LoadingPage } from '../../components/page/loading-page';
+import { Section } from '../../components/shared/section';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '../../components/ui/tabs';
+import { useFeeds } from '../../hook/use-feeds';
+import { usePosts } from '../../hook/use-posts';
 import { FeedsTab } from './components/feeds-tab';
 import { ExploreTab } from './components/explore-tab';
 

@@ -1,10 +1,10 @@
-import type { PostSummary } from '@/types/api';
-import { dayjs } from '@/lib/dayjs';
+import type { PostSummary } from '../../types/api';
+import { dayjs } from '../../lib/dayjs';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LikeCommentSave } from '@/components/shared/like-comment-save';
-import { cn } from '@/lib/utils';
-import { CommentOverlay } from '@/components/shared/comment-overlay';
+import { LikeCommentSave } from '../../components/shared/like-comment-save';
+import { cn } from '../../lib/utils';
+import { CommentOverlay } from '../../components/shared/comment-overlay';
 
 type CardProps = {
   post: PostSummary;

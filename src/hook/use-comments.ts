@@ -1,10 +1,10 @@
-import { apiComments } from '@/api/api-comments';
-import { queryClient } from '@/lib/query-client';
+import { apiComments } from '../api/api-comments';
+import { queryClient } from '../lib/query-client';
 import type {
   GetCommentsResponse,
   PostCommentRequest,
-} from '@/types/api-comments';
-import type { Comment } from '@/types/api';
+} from '../types/api-comments';
+import type { Comment } from '../types/api';
 import {
   useInfiniteQuery,
   useMutation,
@@ -12,7 +12,7 @@ import {
 } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
-import { selectProfile } from '@/store/slices/profile-slice';
+import { selectProfile } from '../store/slices/profile-slice';
 import { feedKeys } from './use-feeds';
 import { postsKeys } from './use-posts';
 import { mePostskeys } from './use-my-profile';

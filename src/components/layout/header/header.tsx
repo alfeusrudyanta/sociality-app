@@ -1,8 +1,8 @@
 import { Search, XIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { useMe } from '@/hook/use-my-profile';
-import { useIsMobile } from '@/hook/use-is-mobile';
-import { useLogout } from '@/hook/use-auth';
+import { useMe } from '../../../hook/use-my-profile';
+import { useIsMobile } from '../../../hook/use-is-mobile';
+import { useLogout } from '../../../hook/use-auth';
 import { Link } from 'react-router-dom';
 import { SearchBar } from './components/search-bar';
 

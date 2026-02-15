@@ -1,4 +1,4 @@
-import { apiUsers } from '@/api/api-users';
+import { apiUsers } from '../api/api-users';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 export const userProfileKeys = {
