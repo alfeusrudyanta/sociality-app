@@ -101,7 +101,7 @@ export const SearchBar = () => {
                   </span>
 
                   <span className='md:text-sm-regular tracking-[-0.02em] text-neutral-400'>
-                    {user.username}
+                    @{user.username}
                   </span>
                 </div>
               </Link>

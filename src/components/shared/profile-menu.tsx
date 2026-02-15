@@ -53,7 +53,7 @@ export const ProfileMenu: React.FC<ProfileMenuProps> = ({
               {profile.name}
             </span>
 
-            <span className='tracking-[-0.02em]'>{profile.username}</span>
+            <span className='tracking-[-0.02em]'>@{profile.username}</span>
           </div>
         </div>
 
