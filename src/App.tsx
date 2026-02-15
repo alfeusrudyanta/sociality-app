@@ -46,7 +46,7 @@ const AppLayoutWithoutMenu = () => {
   );
 };
 
-const App = () => {
+export const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -81,5 +81,3 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
-export default App;
