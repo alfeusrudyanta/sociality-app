@@ -22,7 +22,9 @@ const updateProfileSchema = z.object({
     })
     .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), {
       error: 'Image must be JPG or PNG',
-    }),
+    })
+    .optional(),
+  avatarUrl: z.string().optional(),
 });
 
 type UpdateProfileData = z.infer<typeof updateProfileSchema>;

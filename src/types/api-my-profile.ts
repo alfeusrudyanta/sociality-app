@@ -14,13 +14,22 @@ export type GetMeResponse = ApiResponse<{
   stats: UserStats;
 }>;
 
+type AvatarFileOnly = {
+  avatar: File;
+  avatarUrl?: never;
+};
+
+type AvatarUrlOnly = {
+  avatar?: never;
+  avatarUrl: string;
+};
+
 export type PatchMeRequest = {
   name: string;
   username: string;
   phone: string;
   bio: string;
-  avatar: File;
-};
+} & (AvatarFileOnly | AvatarUrlOnly);
 
 export type PatchMeResponse = ApiResponse<UserProfile & { updatedAt: string }>;
 

@@ -27,6 +27,7 @@ export const UpdateProfilePage = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const initialLoad = !me.data && me.isPending;
+  const avatarUrl = me.data?.data.profile.avatarUrl;
 
   useEffect(() => {
     if (!me.data?.data.profile) return;
@@ -91,12 +92,18 @@ export const UpdateProfilePage = () => {
 
     setError({});
 
+    /* Error in case there is no initial avatar (new user) */
+    if (avatar === null && (avatarUrl === null || avatarUrl === undefined)) {
+      setError((prev) => ({ ...prev, avatar: 'Please select an image' }));
+      return;
+    }
+
     const result = updateProfileSchema.safeParse({
       name,
       username,
       phone,
       bio,
-      avatar,
+      avatar: avatar ?? undefined,
     });
 
     if (!result.success) {
@@ -111,8 +118,30 @@ export const UpdateProfilePage = () => {
       return;
     }
 
+    if (avatar === null) {
+      delete result.data.avatar;
+      result.data.avatarUrl = me.data.data.profile.avatarUrl!;
+    }
+
+    const payload =
+      avatar instanceof File
+        ? {
+            name,
+            username,
+            phone,
+            bio,
+            avatar,
+          }
+        : {
+            name,
+            username,
+            phone,
+            bio,
+            avatarUrl: avatarUrl!,
+          };
+
     /* Mutate */
-    patch.mutate(result.data);
+    patch.mutate(payload);
   };
 
   return (
