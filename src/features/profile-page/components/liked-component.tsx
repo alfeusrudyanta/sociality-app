@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { LoadingSpinner } from '../../../components/shared/loading-spinner';
 import { ProfilePostItem } from '../../../components/shared/profile-post-item';
 import { useUserLikes } from '../../../hook/use-users';
@@ -7,7 +9,15 @@ type LikedComponentProps = {
 };
 
 export const LikedComponent: React.FC<LikedComponentProps> = ({ username }) => {
-  const { data, isPending } = useUserLikes(username);
+  const { data, isPending, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useUserLikes(username);
+  const { inView, ref } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page.data.posts) ?? [];
 
@@ -37,6 +47,14 @@ export const LikedComponent: React.FC<LikedComponentProps> = ({ username }) => {
             imageUrl={post.imageUrl}
           />
         ))
+      )}
+
+      <div ref={ref} />
+
+      {isFetchingNextPage && (
+        <div className='col-span-3 flex justify-center py-4'>
+          <LoadingSpinner />
+        </div>
       )}
     </div>
   );

@@ -91,7 +91,34 @@ export const Header = () => {
 
             {/* Logout Button */}
             {isLogoutOpen && (
-              <div className='absolute right-0 -bottom-15 w-50 rounded-2xl border border-neutral-900 bg-neutral-950 px-4 py-2'>
+              <div className='absolute top-15 right-0 flex w-50 flex-col gap-2 rounded-2xl border border-neutral-900 bg-neutral-950 px-4 py-2'>
+                <Link
+                  to={`/profile/${data?.data.profile.username}`}
+                  key={data?.data.profile.id}
+                  className='group flex w-full cursor-pointer items-center gap-2'
+                >
+                  <img
+                    src={
+                      data?.data.profile.avatarUrl ||
+                      '/images/profile-picture.png'
+                    }
+                    alt={data?.data.profile.name || 'User Profile Picture'}
+                    className='size-12 rounded-full'
+                  />
+
+                  <div className='flex w-full flex-col'>
+                    <span className='group-hover:text-primary-300 text-sm-bold md:text-sm-bold tracking-[-0.01em]'>
+                      {data?.data.profile.name}
+                    </span>
+
+                    <span className='md:text-sm-regular tracking-[-0.02em] text-neutral-400'>
+                      @{data?.data.profile.username}
+                    </span>
+                  </div>
+                </Link>
+
+                <div className='w-full border border-neutral-900' />
+
                 <button
                   onClick={handleLogOut}
                   className='hover:text-accent-red w-full cursor-pointer text-start transition-all'

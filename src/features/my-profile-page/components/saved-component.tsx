@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
 import { LoadingSpinner } from '../../../components/shared/loading-spinner';
 import { ProfilePostItem } from '../../../components/shared/profile-post-item';
 import { useSave } from '../../../hook/use-saves';
+import { useInView } from 'react-intersection-observer';
 
 export const SavedComponent = () => {
-  const { data, isPending } = useSave();
+  const { data, isPending, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useSave();
+  const { inView, ref } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page.data.posts) ?? [];
 
@@ -33,6 +43,14 @@ export const SavedComponent = () => {
             imageUrl={post.imageUrl}
           />
         ))
+      )}
+
+      <div ref={ref} />
+
+      {isFetchingNextPage && (
+        <div className='col-span-3 flex justify-center py-4'>
+          <LoadingSpinner />
+        </div>
       )}
     </div>
   );

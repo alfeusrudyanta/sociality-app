@@ -1,6 +1,8 @@
+import { useInView } from 'react-intersection-observer';
 import { LoadingSpinner } from '../../../components/shared/loading-spinner';
 import { ProfilePostItem } from '../../../components/shared/profile-post-item';
 import { useUserPosts } from '../../../hook/use-users';
+import { useEffect } from 'react';
 
 type GalleryComponentProps = {
   username: string;
@@ -9,7 +11,15 @@ type GalleryComponentProps = {
 export const GalleryComponent: React.FC<GalleryComponentProps> = ({
   username,
 }) => {
-  const { data, isPending } = useUserPosts(username);
+  const { data, isPending, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useUserPosts(username);
+  const { inView, ref } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page.data.posts) ?? [];
 
@@ -39,6 +49,14 @@ export const GalleryComponent: React.FC<GalleryComponentProps> = ({
             imageUrl={post.imageUrl}
           />
         ))
+      )}
+
+      <div ref={ref} />
+
+      {isFetchingNextPage && (
+        <div className='col-span-3 flex justify-center py-4'>
+          <LoadingSpinner />
+        </div>
       )}
     </div>
   );
